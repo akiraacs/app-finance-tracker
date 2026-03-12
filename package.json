@@ -1,0 +1,20 @@
+{
+  "name": "agendamento-app",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "frontend": "npm run dev --workspace=apps/frontend",
+    "backend": "npm run start:dev --workspace=apps/backend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.5.0",
+    "prisma": "^7.5.0"
+  }
+}
