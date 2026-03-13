@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../apps/backend/src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  userId      String
+  type        String   // "income" | "expense"
+  amount      Decimal  @db.Decimal(10, 2)
+  category    String
+  description String?
+  date        DateTime
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+  @@index([userId, date])
+}
